@@ -1,11 +1,12 @@
+"use client";
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
-import Card from '../components/Card';
-import { useAppContext } from '../context/AppContext';
+import { useRouter } from 'next/navigation';
+import Header from '../../src/components/Header';
+import Card from '../../src/components/Card';
+import { useAppContext } from '../../src/context/AppContext';
 
 export default function ParentPortal() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { sessionLogs } = useAppContext();
 
   return (
@@ -13,7 +14,7 @@ export default function ParentPortal() {
       <Header title="Parent Portal" />
       
       <div style={{ padding: '0 24px 24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <button className="btn btn-secondary btn-full" onClick={() => navigate('/child')}>
+        <button className="btn btn-secondary btn-full" onClick={() => router.push('/child/dashboard')}>
           Back to Child Game
         </button>
         

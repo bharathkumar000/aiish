@@ -1,12 +1,13 @@
+"use client";
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
-import Card from '../components/Card';
-import Button from '../components/Button';
-import { useAppContext } from '../context/AppContext';
+import { useRouter } from 'next/navigation';
+import Header from '../../src/components/Header';
+import Card from '../../src/components/Card';
+import Button from '../../src/components/Button';
+import { useAppContext } from '../../src/context/AppContext';
 
 export default function TherapistPortal() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { therapistConfig, updateConfig, sessionLogs, resetProgress } = useAppContext();
   
   const [threshold, setThreshold] = useState(therapistConfig.passThreshold);
@@ -27,7 +28,7 @@ export default function TherapistPortal() {
       <Header title="Therapist Portal" />
       
       <div style={{ padding: '0 24px 24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <button className="btn btn-secondary btn-full" onClick={() => navigate('/child')}>
+        <button className="btn btn-secondary btn-full" onClick={() => router.push('/child/dashboard')}>
           Back to Child Game
         </button>
         

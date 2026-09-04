@@ -1,11 +1,12 @@
+"use client";
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Card from '../components/Card';
-import Button from '../components/Button';
+import { useRouter } from 'next/navigation';
+import Card from '../../../../src/components/Card';
+import Button from '../../../../src/components/Button';
 import { Castle, Star } from 'lucide-react';
 
 export default function VictoryScreen() {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <div className="animate-fade-in" style={{ 
@@ -43,7 +44,7 @@ export default function VictoryScreen() {
       </p>
 
       <div style={{ width: '100%', zIndex: 10, display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <Button size="lg" fullWidth onClick={() => navigate('/child/dashboard')} style={{ backgroundColor: 'white', color: '#4A4036' }}>
+        <Button size="lg" fullWidth onClick={() => router.push('/child/dashboard')} style={{ backgroundColor: 'white', color: '#4A4036' }}>
           Back to Map
         </Button>
       </div>

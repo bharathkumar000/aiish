@@ -1,16 +1,17 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
-import Card from '../components/Card';
+"use client";
+import React, { Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import Button from '../../../../src/components/Button';
+import Card from '../../../../src/components/Card';
 import { Star } from 'lucide-react';
 
-export default function ChildScorecard() {
-  const location = useLocation();
-  const navigate = useNavigate();
+function ScorecardContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   
-  const score = location.state?.score || 0;
-  const total = location.state?.total || 3;
-  const passed = location.state?.passed || false;
+  const score = parseInt(searchParams.get('score') || '0');
+  const total = parseInt(searchParams.get('total') || '3');
+  const passed = searchParams.get('passed') === 'true';
   const percentage = (score / total) * 100;
 
   return (
@@ -45,14 +46,22 @@ export default function ChildScorecard() {
       </Card>
 
       <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <Button size="lg" fullWidth onClick={() => navigate('/child/dashboard')} style={{ backgroundColor: 'white', color: '#4A4036' }}>
+        <Button size="lg" fullWidth onClick={() => router.push('/child/dashboard')} style={{ backgroundColor: 'white', color: '#4A4036' }}>
           Back to Games
         </Button>
-        <Button size="lg" fullWidth variant="secondary" onClick={() => navigate('/parent')}>
+        <Button size="lg" fullWidth variant="secondary" onClick={() => router.push('/parent')}>
           Parent Portal
         </Button>
       </div>
       
     </div>
   );
+}
+
+export default function ChildScorecard() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ScorecardContent />
+    </Suspense>
+  )
 }

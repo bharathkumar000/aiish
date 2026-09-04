@@ -1,17 +1,20 @@
+"use client";
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
-import Card from '../components/Card';
+import { useRouter } from 'next/navigation';
+import Header from '../../src/components/Header';
+import Button from '../../src/components/Button';
+import Card from '../../src/components/Card';
+import { PlayCircle } from 'lucide-react';
 
 export default function ChildOnboarding() {
   const [name, setName] = useState('');
   const [ageGroup, setAgeGroup] = useState('');
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleStart = () => {
     if (name && ageGroup) {
       // In a real app, we'd save this to context/state
-      navigate('/child/dashboard');
+      router.push('/child/dashboard');
     }
   };
 

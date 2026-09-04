@@ -1,18 +1,19 @@
+"use client";
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import './components.css';
 
 export default function Header({ title, showBack = false, onBack }) {
-  const navigate = useNavigate();
+  const router = useRouter();
   
   const handleBack = () => {
     if (onBack) onBack();
-    else navigate(-1);
+    else router.back();
   };
 
   return (
-    <div className="header-container">
+    <div className="header-container" style={{ position: 'relative', zIndex: 100 }}>
       {showBack ? (
         <button onClick={handleBack} className="btn btn-primary" style={{ padding: '8px', borderRadius: '50%' }}>
           <ArrowLeft size={24} />

@@ -1,10 +1,11 @@
+"use client";
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
-import Button from '../components/Button';
-import Card from '../components/Card';
+import { useParams, useRouter } from 'next/navigation';
+import Header from '../../../../../src/components/Header';
+import Button from '../../../../../src/components/Button';
+import Card from '../../../../../src/components/Card';
 import { Volume2, CheckCircle, XCircle, AlertCircle, Image as ImageIcon } from 'lucide-react';
-import { useAppContext } from '../context/AppContext';
+import { useAppContext } from '../../../../../src/context/AppContext';
 
 // Mock data for a session, first item is practice
 const mockTrials = [
@@ -16,7 +17,7 @@ const mockTrials = [
 
 export default function ChildTraining() {
   const { moduleId, levelId } = useParams();
-  const navigate = useNavigate();
+  const router = useRouter();
   const { addSessionLog, therapistConfig, unlockLevel, unlockModule } = useAppContext();
   
   const [currentTrial, setCurrentTrial] = useState(0);
@@ -120,10 +121,11 @@ export default function ChildTraining() {
         }
       }
       
+      const query = `?score=${score}&total=${scoredTrials}&passed=${passed}&moduleId=${moduleId}&levelId=${levelId}`;
       if (gameBeaten) {
-        navigate('/child/victory', { state: { score, total: scoredTrials } });
+        router.push(`/child/victory${query}`);
       } else {
-        navigate('/child/scorecard', { state: { score, total: scoredTrials, moduleId, levelId, passed } });
+        router.push(`/child/scorecard${query}`);
       }
     }
   };
