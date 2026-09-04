@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # Database Service
+  postgres:
+    image: postgres:15-alpine
+    container_name: aiish_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: aiish_user
+      POSTGRES_PASSWORD: aiish_password
+      POSTGRES_DB: aiish_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/schema/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./database/seeds/initial_data.sql:/docker-entrypoint-initdb.d/02-seeds.sql
+    networks:
+      - aiish-network
+
+  # Backend API Server
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: aiish_backend
+    restart: unless-stopped
+    environment:
+      PORT: 5000
+      NODE_ENV: development
+      CLIENT_URL: http://localhost:3000
+      DATABASE_URL: postgresql://aiish_user:aiish_password@postgres:5432/aiish_db
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+    networks:
+      - aiish-network
+
+  # Frontend Next.js Application
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: aiish_frontend
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:5000/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - aiish-network
+
+volumes:
+  pgdata:
+
+networks:
+  aiish-network:
+    driver: bridge
