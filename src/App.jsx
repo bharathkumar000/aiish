@@ -8,6 +8,7 @@ import ChildDashboard from './pages/ChildDashboard';
 import ChildLevelSelect from './pages/ChildLevelSelect';
 import ChildTraining from './pages/ChildTraining';
 import ChildScorecard from './pages/ChildScorecard';
+import VictoryScreen from './pages/VictoryScreen';
 import ParentPortal from './pages/ParentPortal';
 import TherapistPortal from './pages/TherapistPortal';
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/child/level/:moduleId" element={<ChildLevelSelect />} />
             <Route path="/child/training/:moduleId/:levelId" element={<ChildTraining />} />
             <Route path="/child/scorecard" element={<ChildScorecard />} />
+            <Route path="/child/victory" element={<VictoryScreen />} />
             <Route path="/parent/*" element={<ParentPortal />} />
             <Route path="/therapist/*" element={<TherapistPortal />} />
           </Routes>

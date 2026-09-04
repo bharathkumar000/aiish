@@ -17,7 +17,7 @@ const mockTrials = [
 export default function ChildTraining() {
   const { moduleId, levelId } = useParams();
   const navigate = useNavigate();
-  const { addSessionLog, therapistConfig, unlockLevel } = useAppContext();
+  const { addSessionLog, therapistConfig, unlockLevel, unlockModule } = useAppContext();
   
   const [currentTrial, setCurrentTrial] = useState(0);
   
@@ -98,13 +98,33 @@ export default function ChildTraining() {
         passed
       });
       
-      // Auto-unlock next logic (simplistic)
+      // Auto-unlock next logic
+      let gameBeaten = false;
       if (passed) {
-        // Unlock next level in the current module (convert levelId to string for object key)
-        unlockLevel(moduleId, String(parseInt(levelId) + 1));
+        const nextLevel = parseInt(levelId) + 1;
+        if (nextLevel < 3) {
+          // Unlock next level in current module
+          unlockLevel(moduleId, String(nextLevel));
+        } else {
+          // Unlock next module!
+          const moduleKeys = ['phoneme', 'syllable', 'word', 'sentence', 'closure'];
+          const currentIndex = moduleKeys.indexOf(moduleId);
+          if (currentIndex !== -1 && currentIndex < moduleKeys.length - 1) {
+            const nextModule = moduleKeys[currentIndex + 1];
+            unlockModule(nextModule);
+            // Also ensure the first level of that module is unlocked
+            unlockLevel(nextModule, '0');
+          } else if (currentIndex === moduleKeys.length - 1) {
+            gameBeaten = true;
+          }
+        }
       }
       
-      navigate('/child/scorecard', { state: { score, total: scoredTrials, moduleId, levelId, passed } });
+      if (gameBeaten) {
+        navigate('/child/victory', { state: { score, total: scoredTrials } });
+      } else {
+        navigate('/child/scorecard', { state: { score, total: scoredTrials, moduleId, levelId, passed } });
+      }
     }
   };
 

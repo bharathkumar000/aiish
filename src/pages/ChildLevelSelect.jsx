@@ -5,10 +5,21 @@ import Card from '../components/Card';
 import { Play, Lock } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 
+// We standardize to 3 levels per module for the map concept
 const subLevels = {
-  phoneme: ['Initial Omission', 'Medial Omission', 'Final Omission', 'Phoneme Blending', 'Speech in Noise'],
+  phoneme: ['Initial Omission', 'Medial Omission', 'Final Omission'],
   syllable: ['Initial Syllable', 'Medial Syllable', 'Final Syllable'],
-  // Add others as needed
+  word: ['Level 1', 'Level 2', 'Level 3'],
+  sentence: ['Level 1', 'Level 2', 'Level 3'],
+  closure: ['Level 1', 'Level 2', 'Level 3'],
+};
+
+const moduleColors = {
+  phoneme: 'var(--color-pastel-peach)',
+  syllable: 'var(--color-pastel-green)',
+  word: 'var(--color-pastel-blue)',
+  sentence: 'var(--color-pastel-pink)',
+  closure: 'var(--color-pastel-yellow)',
 };
 
 export default function ChildLevelSelect() {
@@ -18,10 +29,11 @@ export default function ChildLevelSelect() {
   
   const levels = subLevels[moduleId] || ['Level 1', 'Level 2', 'Level 3'];
   const moduleUnlockedLevels = unlockedLevels[moduleId] || {};
+  const bgColor = moduleColors[moduleId] || 'var(--color-bg-primary)';
 
   return (
-    <div style={{ backgroundColor: 'var(--color-bg-primary)', minHeight: '100vh' }}>
-      <Header title="Select Level" showBack />
+    <div style={{ backgroundColor: bgColor, minHeight: '100vh' }}>
+      <Header title="Inside the Building!" showBack />
       
       <div style={{ padding: '0 24px 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         {levels.map((level, idx) => {
