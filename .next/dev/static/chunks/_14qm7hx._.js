@@ -1706,8 +1706,12 @@ const AppProvider = ({ children })=>{
     _s();
     const [appState, setAppState] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
         "AppProvider.useState": ()=>{
-            const saved = localStorage.getItem('aiish_app_state');
-            return saved ? JSON.parse(saved) : defaultState;
+            if ("TURBOPACK compile-time truthy", 1) {
+                const saved = localStorage.getItem('aiish_app_state');
+                return saved ? JSON.parse(saved) : defaultState;
+            }
+            //TURBOPACK unreachable
+            ;
         }
     }["AppProvider.useState"]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
@@ -1774,11 +1778,11 @@ const AppProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/src/context/AppContext.jsx",
-        lineNumber: 74,
+        lineNumber: 77,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
-_s(AppProvider, "LTm6dxHZ/eAWGnKyHD+UELtlOAg=");
+_s(AppProvider, "A6/ttQOZ2q4EseesW5vJgGJTncU=");
 _c = AppProvider;
 const useAppContext = ()=>{
     _s1();

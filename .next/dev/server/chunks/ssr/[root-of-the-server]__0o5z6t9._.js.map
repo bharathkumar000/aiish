@@ -2,5 +2,5 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/singh/OneDrive/Documents/Projects/AIISH/app/page.jsx"],"sourcesContent":["import { redirect } from 'next/navigation';\n\nexport default function Home() {\n  redirect('/child');\n}\n"],"names":["Home"],"mappings":";;;;AAAA;AAAA;;AAEe,SAASA;IACtB,IAAA,iMAAQ,EAAC;AACX"}}]
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Srinivas/Desktop/srini/projects/AIISH/app/page.jsx"],"sourcesContent":["import { redirect } from 'next/navigation';\n\nexport default function Home() {\n  redirect('/child');\n}\n"],"names":["Home"],"mappings":";;;;AAAA;AAAA;;AAEe,SAASA;IACtB,IAAA,iMAAQ,EAAC;AACX"}}]
 }
