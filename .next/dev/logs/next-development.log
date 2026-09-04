@@ -1,1 +1,2 @@
 {"timestamp":"00:00:19.803","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:04:54.497","source":"Server","level":"ERROR","message":"⨯ \"unhandledRejection:\" Error: ENOENT: no such file or directory, scandir 'C:\\Users\\Srinivas\\Desktop\\srini\\projects\\AIISH\\app'"}
