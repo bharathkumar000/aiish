@@ -1,1 +1,6 @@
-{}
+{
+  "/child/dashboard/page": "app/child/dashboard/page.js",
+  "/child/level/[moduleId]/page": "app/child/level/[moduleId]/page.js",
+  "/child/training/[moduleId]/[levelId]/page": "app/child/training/[moduleId]/[levelId]/page.js",
+  "/page": "app/page.js"
+}

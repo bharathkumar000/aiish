@@ -1,0 +1,91 @@
+/* [project]/src/components/components.css [app-client] (css) */
+.btn {
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-clay-btn);
+  color: var(--color-text-main);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  border: 3px solid #4a4036;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  transition: all .2s ease-in-out;
+  display: inline-flex;
+}
+
+.btn:active {
+  box-shadow: 0 0 #4a4036;
+  transform: translate(2px, 4px) !important;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+}
+
+.btn-success {
+  background-color: var(--color-success);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.btn-md {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  font-size: 20px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.card {
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-clay-outer);
+  border: 4px solid #4a4036;
+  padding: 24px;
+  transition: all .2s ease-in-out;
+}
+
+.card.clickable {
+  cursor: pointer;
+}
+
+.card.clickable:hover {
+  transform: translateY(-4px)rotate(-1deg);
+  box-shadow: 8px 10px #4a4036;
+}
+
+.header-container {
+  background-color: var(--color-pastel-blue);
+  border-bottom-left-radius: var(--border-radius-lg);
+  border-bottom-right-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-clay-outer);
+  border-bottom: 4px solid #4a4036;
+  border-left: 4px solid #4a4036;
+  border-right: 4px solid #4a4036;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  margin-left: -4px;
+  margin-right: -4px;
+  padding: 20px 24px;
+  display: flex;
+}
+
+/*# sourceMappingURL=src_components_components_1ml3m8v.css.map*/

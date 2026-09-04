@@ -1,91 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;800;900&display=swap');
+
 :root {
-  /* Claymorphism Color Palette */
-  --color-bg-primary: #FAF1E6; /* Soft creamy beige background */
-  --color-bg-secondary: #FFFFFF;
+  --color-primary: #FFB347; 
+  --color-primary-dark: #FF9B1A;
+  --color-secondary: #77DD77;
+  --color-secondary-dark: #5EC45E;
   
-  /* Vibrant Pastels */
-  --color-pastel-green: #C2E0D4;
-  --color-pastel-peach: #FFD2C0;
-  --color-pastel-blue: #C3D5E6;
-  --color-pastel-yellow: #FFE8B6;
-  --color-pastel-pink: #FFC0CB;
-
-  --color-primary: var(--color-pastel-peach);
-  --color-primary-dark: #FFB399;
-  --color-secondary: var(--color-pastel-green);
-  --color-success: #A3D9A5; 
-  --color-error: #FF9999;
-  --color-text-main: #4A4036; /* Soft dark brown for readability */
-  --color-text-muted: #8A7E71;
-
-  /* Typography */
-  --font-family: 'Fredoka', sans-serif;
-
-  /* UI Elements */
-  --border-radius-lg: 32px;
-  --border-radius-md: 24px;
-  --border-radius-sm: 16px;
+  --color-pastel-peach: #FFDAB9;
+  --color-pastel-green: #B4E197;
+  --color-pastel-blue: #AEC6CF;
+  --color-pastel-pink: #FFB7B2;
+  --color-pastel-yellow: #FDFD96;
   
-  /* Cartoon Shadows */
-  --shadow-clay-outer: 4px 6px 0px #4A4036;
-  --shadow-clay-inner: none;
-  --shadow-clay-btn: 2px 4px 0px #4A4036;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  --color-bg-primary: #F8F1E5; /* Light Beige background matching references */
+  --color-text-main: #4A4036;
+  --color-text-muted: #8B7355;
+  --color-error: #FF6961;
+  
+  --shadow-solid: 0px 6px 0px #4A4036;
+  --border-radius-xl: 24px;
+  --border-radius-lg: 16px;
+  
+  --font-fredoka: 'Fredoka', sans-serif;
 }
 
 body {
-  font-family: var(--font-family);
+  margin: 0;
+  font-family: var(--font-fredoka);
   background-color: var(--color-bg-primary);
   color: var(--color-text-main);
-  min-height: 100vh;
-  /* Add a subtle doodle paper texture */
-  background-image: radial-gradient(#d4c4b7 1px, transparent 1px);
-  background-size: 20px 20px;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Base button styles */
-button {
-  font-family: var(--font-family);
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
-
-/* Utilities */
 .app-container {
-  max-width: 480px; /* Mobile/tablet optimized width */
+  max-width: 600px;
   margin: 0 auto;
   min-height: 100vh;
-  background-color: var(--color-bg-secondary);
-  box-shadow: var(--shadow-md);
+  background-color: var(--color-bg-primary);
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
   position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* Smooth fade in */
+/* Animations */
+@keyframes bounceScale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.animate-bounce-scale {
+  animation: bounceScale 2s infinite ease-in-out;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 .animate-fade-in {
   animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* Bouncy scale */
-@keyframes bouncyScale {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(119, 221, 119, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(119, 221, 119, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(119, 221, 119, 0); }
 }
-
-.animate-bounce-scale:hover {
-  animation: bouncyScale 0.4s ease-in-out infinite;
+.animate-pulse {
+  animation: pulse 2s infinite;
 }

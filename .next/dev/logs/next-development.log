@@ -1,2 +1,6 @@
 {"timestamp":"00:00:08.463","source":"Server","level":"LOG","message":""}
 {"timestamp":"00:00:08.466","source":"Server","level":"LOG","message":"✓ Generated AGENTS.md and CLAUDE.md for AI agents. Set `agentRules: false` in next.config to disable."}
+{"timestamp":"00:02:25.612","source":"Server","level":"LOG","message":"○ Compiling / ..."}
+{"timestamp":"00:02:31.548","source":"Server","level":"ERROR","message":"⨯ ReferenceError: localStorage is not defined"}
+{"timestamp":"00:02:32.229","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:02:35.458","source":"Server","level":"LOG","message":"○ Compiling /child/dashboard ..."}
