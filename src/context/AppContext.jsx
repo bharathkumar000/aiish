@@ -27,8 +27,11 @@ const defaultState = {
 
 export const AppProvider = ({ children }) => {
   const [appState, setAppState] = useState(() => {
-    const saved = localStorage.getItem('aiish_app_state');
-    return saved ? JSON.parse(saved) : defaultState;
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('aiish_app_state');
+      return saved ? JSON.parse(saved) : defaultState;
+    }
+    return defaultState;
   });
 
   useEffect(() => {

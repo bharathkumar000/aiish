@@ -1,8 +1,8 @@
 "use client";
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import Card from '../../../../src/components/Card';
-import Button from '../../../../src/components/Button';
+import Card from '../../../src/components/Card';
+import Button from '../../../src/components/Button';
 import { Castle, Star } from 'lucide-react';
 
 export default function VictoryScreen() {
