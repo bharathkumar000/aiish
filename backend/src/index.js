@@ -22,6 +22,21 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Root Welcome & Documentation Route
+app.get('/', (req, res) => {
+  res.json({
+    name: 'AIISH Auditory Closure Training API',
+    status: 'running',
+    frontendUrl: CLIENT_URL,
+    endpoints: {
+      health: '/api/health',
+      config: '/api/config',
+      sessions: '/api/sessions',
+      progress: '/api/progress'
+    }
+  });
+});
+
 // Health Check API
 app.get('/api/health', (req, res) => {
   res.json({
